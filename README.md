@@ -1,0 +1,23 @@
+# WCore
+	
+	Created for use with WUploader and WClient
+
+	* WCore & WUploader
+		WUploader send JSON data with POST method for WCore like: http://localhost:4567/upload
+		WCore capture the JSON and inject into the db
+	
+	* WCore & WClient
+		WClient need data, then, send a GET request for WCore and that ouput the data in JSON format
+
+
+# Install
+
+	* Create a database. Example: mysqladmin -uroot -p123456 create api_weather
+	* Configure `config/database.yml`
+	* Run bundler: `bundle install`
+	* Run database migrations: `bundle exec rake db:migrate`
+
+# Use
+	
+	* Run: `ruby listener.rb`
+

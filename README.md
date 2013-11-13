@@ -14,6 +14,7 @@
 
 	* Create a database. Example: mysqladmin -uroot -p123456 create api_weather
 	* Configure `config/database.yml`
+	* Configure `config/config.yml` for token base
 	* Run bundler: `bundle install`
 	* Run database migrations: `bundle exec rake db:migrate`
 

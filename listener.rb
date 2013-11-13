@@ -5,38 +5,58 @@ require 'yaml'
 require 'sinatra/activerecord/rake'
 require './lib/model/weather_datum'
 require './lib/model/weather_station'
+require 'digest/md5'
 
 environment = ENV['RAKE_ENV'] || 'development'
-path = 'config/database.yml'
-database_hash = YAML.load(ERB.new(File.read(path)).result) || {}
+
+database_hash = YAML.load(ERB.new(File.read('config/database.yml')).result) || {}
+
+
 database_hash = database_hash[environment.to_s] if database_hash[environment.to_s]
 ActiveRecord::Base.establish_connection database_hash
 
-def write(data)
-	data.each do |k, e|
+set :token_config, YAML.load(ERB.new(File.read('config/config.yml')).result) || {}
 
+
+def check_token(station, token)
+
+	if (Digest::MD5.hexdigest(station + settings.token_config['basetoken']) == token) then
+		return true
+	else
+		return false
+	end
+end
+
+def write(data, token)
+	return_message = 'no data'
+	data.each do |k, e|
+		return_message = 'ok'
 		station = Hash.new
 		station['url'] = e['url']
 		e.delete('url')
-		
+			
 		station['id_station'] = e['id_station']
-		
+			
 		station['name'] = e['name']
- 		e.delete('name')
- 		
- 		station['adress'] = e['adress']
+	 	e.delete('name')
+	 		
+	 	station['adress'] = e['adress']
 		e.delete('adress')
-		
+			
 		station['lat'] = e['lat']
 		e.delete('lat')
-		
+			
 		station['long'] = e['long']
 		e.delete('long')
 
-		WeatherDatum.find_or_create_by(e)
-		WeatherStation.find_or_create_by(station)
+		if (check_token(station['id_station'], token)) then	
+			WeatherDatum.find_or_create_by(e)
+			WeatherStation.find_or_create_by(station)
+		else
+			return_message = 'error token'
+		end
 	end
-	return 'ok'
+	return_message
 end
 
 def read(data, station)
@@ -64,7 +84,7 @@ def weather_stations
 end
 
 post '/upload' do
-  write(JSON.parse(params[:data]))
+  write(JSON.parse(params[:data]), params[:token])
 end
 
 get '/download', provides: :json do

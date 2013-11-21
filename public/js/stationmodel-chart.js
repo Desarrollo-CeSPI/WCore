@@ -1,5 +1,3 @@
-var url_station = "http://localhost:9000/download?data=station&station=";
-
 function initialize_chart(anStation, type){
    var title = '';
    var aColor = '#000000';

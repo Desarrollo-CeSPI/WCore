@@ -1,8 +1,8 @@
 development:
   adapter:  mysql2
   encoding: utf8
-  database: api_weather
+  database: wcore
   pool:     5
   username: root
-  password: wtraaasss77
+  password: 
   host:     localhost

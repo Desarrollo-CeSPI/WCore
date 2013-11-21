@@ -84,7 +84,7 @@ def weather_stations
 end
 
 get '/' do
-  redirect_to '/index.htm'
+  redirect '/index.htm'
 end
 
 post '/upload' do

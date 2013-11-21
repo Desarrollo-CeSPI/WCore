@@ -83,6 +83,10 @@ def weather_stations
 	end
 end
 
+get '/' do
+  redirect_to '/index.htm'
+end
+
 post '/upload' do
   write(JSON.parse(params[:data]), params[:token])
 end

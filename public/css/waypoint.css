@@ -1,0 +1,106 @@
+.wp-container{
+	border: 5px solid #BDC3C7;
+	background-color: #505050;
+	width:80%;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;		
+}
+
+.wp-block-temperatura{
+	float:left;  
+	text-align:left;
+	width:100%;
+	height:1.5em;
+	white-space:nowrap;
+	margin-left:1em;	
+}
+
+.wp-block-humedad{
+	float:left;  
+	text-align:center;
+	width:100%;
+	height:1.5em;
+	white-space:nowrap;
+	margin-left:1em;	
+}
+
+.wp-block-presion{
+	float:left;  
+	text-align:left;
+	width:100%;
+	height:1.5em;	
+	white-space:nowrap;
+	margin-left:1em;	
+}
+
+.wp-block-velocidad{
+	float:left;  
+	text-align:center;
+	width:100%;
+	height:1.5em;
+	white-space:nowrap;	
+	margin-left:1em;	
+}
+.gm-style-iw{ overflow: hidden !important;}
+
+.wp-block-direccion{
+	float:left;  
+	text-align:center;
+	width:100%;
+	height:1.5em;
+	white-space:nowrap;
+	margin-left:1em;	
+}
+
+#wp-minicontainer{
+	width:100%;
+	background:#2C3E50;
+	-webkit-border-top-left-radius: 20px;
+	-webkit-border-top-right-radius: 20px;
+	-moz-border-radius-topleft: 20px;
+	-moz-border-radius-topright: 20px;
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;	
+}
+
+#wp-web{
+	color: #FFFFFF;
+	text-align:left;
+	font-weight: bold;
+	width:30%;
+	margin-left:1em;
+	float:left;
+}
+
+#wp-big{
+	color: #FFFFFF;
+	font-size: 1.4em;
+	text-align:center;
+	font-weight: bold;
+	width:100%;
+	float:left;
+}
+
+#wp-fecha{
+	color: #FFFFFF;
+	font-size: 0.7em;
+	font-weight: bold;
+	width:30%;
+	float:right;
+}
+
+
+#wp-web a:link, 
+#wp-web a:visited, 
+#wp-web a:hover { 
+ color: #DDDDDD; 
+ text-decoration: none; 
+} 
+
+.wp-normal{
+	color: #FFFFFF;
+	font-size: 1em;
+	font-weight: bold;
+	width:50%;
+}

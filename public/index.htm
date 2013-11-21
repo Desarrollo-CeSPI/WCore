@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+   <head>
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1, width=device-width, user-scalable=no" charset="utf-8">
+      <title>Weather Station's LP</title>
+   </head>
+   <body>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/underscore-min.js"></script>
+    <script type="text/javascript" src="js/backbone-min.js"></script>
+    <script type="text/javascript" src="js/handlebars.js"></script>
+    <script type="text/javascript" src="js/googlemaps.js"></script>
+    <script type="text/javascript" src="js/stationmodel-basic-functions.js"></script>    
+    <script type="text/javascript" src="js/stationmodel-map.js"></script>
+
+		<script type="text/javascript" src="./js/jquery.mmenu.min.all.js"></script>
+		<link type="text/css" rel="stylesheet" href="./css/menu_slider.css" />
+		<link type="text/css" rel="stylesheet" href="./css/jquery.mmenu.all.css" />
+		<script type="text/javascript">
+			$(function() {
+				$('nav#menu').mmenu();
+
+				$('div#photos').mmenu({
+					classes		: 'mm-fullscreen mm-light',
+					position	: 'right',
+					zposition	: 'front',
+					header		: true
+				});
+			});
+		</script>
+
+    <link rel="stylesheet" type="text/css" href="css/menu.css" />
+    <link rel="stylesheet" type="text/css" href="css/waypoint.css" />
+    <link rel="stylesheet" type="text/css" href="css/maps.css" />
+	<link rel="stylesheet" type="text/css" href="css/header.css" />
+
+
+
+	<script id="template-list-links" type="text/x-handlebars-template">
+		{{#station}}
+			<li>
+				<a id="link-item" href="#" onclick="javascript:myClick({{n}});"><img src="./img/{{id}}.png"></a>&nbsp;<a href="./grafico.htm?station={{id}}&type=Temperatura"><img src="./img/chart.png"></a>&nbsp;<a id="link-item" href="#" onclick="javascript:myClick({{n}});">{{name}}</a>
+			</li>
+		{{/station}}
+	</script>   
+
+	<script id="template-waypoint-menu" type="text/x-handlebars-template">
+	    {{#waypoint}}
+			<div class="wp-container">
+					<div id="wp-minicontainer">
+						<div id="wp-big">{{name}}</div>
+						<div id="wp-web"><a href="{{url}}">WEB</a></div>
+						<div id="wp-fecha">{{update}}</div>
+						<div style="clear:Both"></div>
+				</div>
+
+				<div class="wp-block-temperatura">
+					<div class="wp-normal" align="left">Temperatura {{temperatura}} °C</div>
+				</div>
+
+				<div class="wp-block-humedad">
+					<div class="wp-normal" align="left">Humedad {{humedad}} %</div>
+				</div>
+
+				<div class="wp-block-presion">
+					<div class="wp-normal" align="left">Presión atmosférica {{presion}} hPa</div>
+				</div>
+
+				<div class="wp-block-velocidad">
+					<div class="wp-normal" align="left">Velocidad del viento {{velocidad}} km/h</div>
+				</div>
+
+				<div class="wp-block-direccion">
+					<div class="wp-normal" align="left">Dirección del viento {{direccion}}</div>
+				</div>
+
+				<div style="clear:Both"></div>
+			</div>
+		{{/waypoint}}
+	</script>
+
+
+
+
+
+
+
+		<div id="container">
+
+
+<div id="lateral">
+		<div id="page">
+			<div id="header">
+				<a href="#menu"></a>
+			</div>
+			<nav id="menu">
+			<ul>
+	  		<div id="stations"></div>
+	  	</ul>
+	  	</nav>
+		</div>	
+</div>
+
+
+
+ 
+    <div id="map-canvas"></div>
+
+	  <div id="logo">
+		  <a id="link" href="index.htm"><img id="logo" src="./img/logo.gif"><br>
+		  </a>
+	  </div>
+
+
+
+	  <script>
+      	initialize_map();
+    </script>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+	</body>
+</html>

@@ -1,0 +1,21 @@
+#map-canvas {
+	width:100%; 
+	height:100%;	
+}
+
+#container{
+	text-align: left;
+	width: 100%;
+	height: 100%;
+	margin: auto;
+}
+
+#lateral{
+width: 20%;  /*Este será el ancho que tendrá tu columna*/
+background-color: #CCCCCC;  /*Aquí pon el color del fondo que quieras para este lateral*/
+float:left; /*Aqui determinas de lado quieres quede esta "columna" */
+}
+
+
+html { height: 100% }
+body { height: 100%; margin: 0px; padding: 0px }

@@ -1,0 +1,23 @@
+#web-header{
+	background: rgb(255, 255, 255); /* Fall-back for browsers that don't
+	                                    support rgba */
+	background: rgba(255, 255, 255, .5);
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+	padding:1em;
+	width:8em;
+	text-align:left;
+}   
+
+#link{
+	text-decoration:none;
+	color:#000000;
+	font-size:1.3em;
+}
+
+#logo{
+	width:6em;
+	opacity:0.5;
+	filter:alpha(opacity=50); /* For IE8 and earlier */
+}

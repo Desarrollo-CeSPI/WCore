@@ -1,4 +1,4 @@
-url_station = "http://192.168.1.138:4567/download?data=station&station=";
+var url_station = "http://localhost:9000/download?data=station&station=";
 
 function initialize_chart(anStation, type){
    var title = '';

@@ -1,4 +1,4 @@
-url_waypoint = "http://192.168.1.138:4567/download?data=waypoints";
+var url_waypoint = "http://localhost:9000/download?data=waypoints";
 
 function initialize_map(){
    var StationsModel = Backbone.Model.extend({

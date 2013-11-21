@@ -12,7 +12,9 @@
 
 # Install
 
-	* Create a database. Example: mysqladmin -uroot -p123456 create api_weather
+	* Create a database. Example: mysqladmin -uroot -p123456 create wcore
+	* Copy `config/station.yml-sample` to `config/database.yml`
+	* Copy `config/station.yml-sample` to `config/config.yml`
 	* Configure `config/database.yml`
 	* Configure `config/config.yml` for token base
 	* Run bundler: `bundle install`
@@ -20,5 +22,5 @@
 
 # Use
 	
-	* Run: `ruby listener.rb`
+	* Run: `ruby listener.rb -o 0.0.0.0`
 

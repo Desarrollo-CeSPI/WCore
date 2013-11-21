@@ -9,6 +9,11 @@ function timeStampForHuman(aTimeStamp){
   return date;
 }
 
+function zeroPad(num, places) {
+  var zero = places - num.toString().length + 1;
+  return Array(+(zero > 0 && zero)).join("0") + num;
+}
+
 function args( name ){
   var regexS = "[\\?&]"+name+"=([^&#]*)";
   var regex = new RegExp ( regexS );

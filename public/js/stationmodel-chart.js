@@ -34,7 +34,7 @@ function initialize_chart(anStation, type){
          anArray.push(["Year", type]);          
          array_stations.forEach(function(data) {//data for template
             var fecha = timeStampForHuman(data[0]);
-            var stringFecha = fecha['date'] + '/' + fecha['month'] + '/' + fecha['year'] + ' ' + fecha['hours'] + ':' + fecha['minutes'];
+            var stringFecha = fecha['date'] + '/' + fecha['month'] + ' ' + fecha['hours'] + ':' + zeroPad(fecha['minutes'], 2);
             anArray.push([stringFecha, parseInt(data[1])]);
          });
 

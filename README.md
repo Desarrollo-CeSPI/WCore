@@ -22,5 +22,5 @@
 
 # Use
 	
-	* Run: `ruby listener.rb -o 0.0.0.0`
+	* Run: `bundle exec rackup`
 

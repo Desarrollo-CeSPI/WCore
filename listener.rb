@@ -7,7 +7,7 @@ require './lib/model/weather_datum'
 require './lib/model/weather_station'
 require 'digest/md5'
 
-environment = ENV['RAKE_ENV'] || 'development'
+environment = ENV['RACK_ENV'] || 'development'
 
 database_hash = YAML.load(ERB.new(File.read('config/database.yml')).result) || {}
 

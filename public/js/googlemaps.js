@@ -3,21 +3,31 @@ var markers = [];//Array for save the object MARKER in the maps, to can link on 
 var infowindows = [];//For can close all infowindows...
 function initialize_google() {
   var mapOptions = {
+
+    panControlOptions: {
+      position: google.maps.ControlPosition.LEFT_TOP
+    },
+
+    zoomControlOptions: {
+      position: google.maps.ControlPosition.LEFT_TOP
+    },
+
     zoom: 13,
     center: new google.maps.LatLng(-34.922127, -57.955585),
-    mapTypeId: google.maps.MapTypeId.ROADMAP
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    streetViewControl: false
   };
 
   map = new google.maps.Map(document.getElementById('map-canvas'),
       mapOptions);
 
   //integrate the DIV "Header" into Google MAPS
-  var header = document.getElementById('logo');
-  map.controls[google.maps.ControlPosition.TOP_LEFT].push(header);
+  var header = document.getElementById('logo_container');
+  map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(header);
 
   //integrate the DIV "List of Stations" into Google MAPS
   var menu_slider = document.getElementById('header');
-  map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(menu_slider);
+  map.controls[google.maps.ControlPosition.TOP_LEFT].push(menu_slider);
 
 }
 

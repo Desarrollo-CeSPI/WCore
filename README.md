@@ -6,7 +6,7 @@
 		WUploader send JSON data with POST method for WCore like: http://localhost:4567/upload
 		WCore capture the JSON and inject into the db
 	
-	* WCore & WClient
+	* WCore & WClient (public folder)
 		WClient need data, then, send a GET request for WCore and that ouput the data in JSON format
 
 

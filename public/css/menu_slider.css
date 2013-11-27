@@ -4,7 +4,7 @@ html, body
 	margin: 0;
 }
 body {
-	background-color: #eee;
+	background-color: #505050;
 	font-family: Arial, Helvetica, Verdana;
 	font-size: 14px;
 	line-height: 22px;
@@ -54,10 +54,7 @@ pre
 #header,
 .header,
 #footer
-{
-	-webkit-border-radius: 20px;
-	-moz-border-radius: 20px;
-	border-radius: 20px;	
+{	
 	background: #505050;
 	font-size: 16px;
 	font-weight: bold;

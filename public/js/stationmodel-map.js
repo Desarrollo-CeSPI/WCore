@@ -27,6 +27,7 @@ function initialize_map(){
 
          $(template(info)).appendTo( "#stations" );//Print the template merged with data, into DIV: stations  
          
+         stations_loaded();
       }
    });
 

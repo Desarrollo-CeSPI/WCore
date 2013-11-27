@@ -4,8 +4,13 @@
 	font-size:1.3em;
 }
 
+#logo_container{
+	margin-left:2em;
+	float:center;
+}
+
 #logo{
-	width:6em;
+	width:12em;
 	opacity:0.5;
 	filter:alpha(opacity=50); /* For IE8 and earlier */
 }

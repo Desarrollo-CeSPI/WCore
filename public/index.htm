@@ -15,28 +15,37 @@
     <script type="text/javascript" src="js/stationmodel-basic-functions.js"></script>    
     <script type="text/javascript" src="js/stationmodel-map.js"></script>
 
+
 		<script type="text/javascript" src="./js/jquery.mmenu.min.all.js"></script>
 		<link type="text/css" rel="stylesheet" href="./css/menu_slider.css" />
 		<link type="text/css" rel="stylesheet" href="./css/jquery.mmenu.all.css" />
 		<script type="text/javascript">
 			$(function() {
 				$('nav#menu').mmenu();
-
-				$('div#photos').mmenu({
-					classes		: 'mm-fullscreen mm-light',
-					position	: 'right',
-					zposition	: 'front',
-					header		: true
-				});
+			});
+			function abrir_menu(){
+			           $("#menu")
+					     .mmenu()
+					     .trigger( "open.mm" )
+					     .on( "open.mm" );  
+			}
+			jQuery(document).ready(function ($) {
+				if ($(window).width() > 597) {
+					abrir_menu();
+				}	
+			});
+			$( window ).resize(function() {
+				if ($(window).width() > 597) {
+					abrir_menu();
+				}
 			});
 		</script>
+
 
     <link rel="stylesheet" type="text/css" href="css/menu.css" />
     <link rel="stylesheet" type="text/css" href="css/waypoint.css" />
     <link rel="stylesheet" type="text/css" href="css/maps.css" />
 	<link rel="stylesheet" type="text/css" href="css/header.css" />
-
-
 
 	<script id="template-list-links" type="text/x-handlebars-template">
 		{{#station}}
@@ -96,10 +105,10 @@
 				<a href="#menu"></a>
 			</div>
 			<nav id="menu">
-			<ul>
-	  		<div id="stations"></div>
-	  	</ul>
-	  	</nav>
+				<ul>
+		  			<div id="stations"></div>
+		  		</ul>
+	  		</nav>
 		</div>	
 </div>
 
@@ -108,9 +117,8 @@
  
     <div id="map-canvas"></div>
 
-	  <div id="logo">
-		  <a id="link" href="index.htm"><img id="logo" src="./img/logo.gif"><br>
-		  </a>
+	  <div id="logo_container">
+		  <img id="logo" src="./img/logo.gif">
 	  </div>
 
 

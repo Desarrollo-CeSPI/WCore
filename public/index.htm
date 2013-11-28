@@ -21,24 +21,45 @@
 		<link type="text/css" rel="stylesheet" href="./css/jquery.mmenu.all.css" />
 		<script type="text/javascript">
 			$(function() {
-				$('nav#menu').mmenu();
+				$("nav#menu")
+				   .mmenu()
+				   .on(
+				      "opened.mm",
+				      function()
+				      {
+				         document.getElementById("map-canvas").style.width="80%";
+				      })
+				   .on(
+				      "closed.mm",
+				      function()
+				      {
+				         document.getElementById("map-canvas").style.width="100%";
+				      })				   
 			});
+
 			function abrir_menu(){
 			           $("#menu")
 					     .mmenu()
 					     .trigger( "open.mm" )
 					     .on( "open.mm" );  
 			}
+			function cerrar_menu(){
+			           $("#menu")
+					     .mmenu()
+					     .trigger( "close.mm" )
+					     .on( "close.mm" );  
+			}			
 			jQuery(document).ready(function ($) {
-				if ($(window).width() > 597) {
+				if ($(window).width() > 900) {
 					abrir_menu();
 				}	
 			});
 			$( window ).resize(function() {
-				if ($(window).width() > 597) {
+				if ($(window).width() > 900) {
 					abrir_menu();
 				}
 			});
+
 		</script>
 
 
@@ -61,6 +82,7 @@
 					<div id="wp-minicontainer">
 						<div id="wp-big">{{name}}</div>
 						<div id="wp-web"><a href="{{url}}">WEB</a></div>
+						<a href="./grafico.htm?station={{id}}&type=Temperatura"><img src="./img/chart.png"></a>
 						<div id="wp-fecha">{{update}}</div>
 						<div style="clear:Both"></div>
 				</div>
@@ -98,29 +120,31 @@
 
 		<div id="container">
 
-
-<div id="lateral">
 		<div id="page">
-			<div id="header">
-				<a href="#menu"></a>
+
+			<div id="header" onclick="abrir_menu();">
+				<div id="fondo"></div>
+
+
 			</div>
 			<nav id="menu">
+
 				<ul>
 		  			<div id="stations"></div>
 		  		</ul>
 	  		</nav>
+
 		</div>	
-</div>
 
 
 
  
     <div id="map-canvas"></div>
 
+
 	  <div id="logo_container">
 		  <img id="logo" src="./img/logo.gif">
 	  </div>
-
 
 
 	  <script>
@@ -131,9 +155,7 @@
 
 
 
-
 </div>
-
 
 
 

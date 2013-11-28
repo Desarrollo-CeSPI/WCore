@@ -23,7 +23,7 @@ function initialize_google() {
 
   //integrate the DIV "Header" into Google MAPS
   var header = document.getElementById('logo_container');
-  map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(header);
+  map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(header);
 
   //integrate the DIV "List of Stations" into Google MAPS
   var menu_slider = document.getElementById('header');
@@ -33,10 +33,6 @@ function initialize_google() {
 
 function myClick(id){//When click on a link of the right menu, calls that function, to auto-open the WP-Dialog(Infowindow)
   google.maps.event.trigger(markers[id], 'click');
-  $("#menu")
-     .mmenu()
-     .trigger( "close.mm" )
-     .on( "closed.mm" );  
 }
 
 function attachPoint(map, latitude, longitude, name, html, icon) {//add a waypoint to the map

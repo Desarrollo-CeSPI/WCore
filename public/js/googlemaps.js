@@ -22,6 +22,10 @@ function initialize_google() {
       mapOptions);
 
   //integrate the DIV "Header" into Google MAPS
+  var stats = document.getElementById('stats');
+  map.controls[google.maps.ControlPosition.TOP_CENTER].push(stats);
+
+  //integrate the DIV "Header" into Google MAPS
   var header = document.getElementById('logo_container');
   map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(header);
 
@@ -33,6 +37,7 @@ function initialize_google() {
 
 function myClick(id){//When click on a link of the right menu, calls that function, to auto-open the WP-Dialog(Infowindow)
   google.maps.event.trigger(markers[id], 'click');
+  initialize_chart(1, 'Temperatura');
 }
 
 function attachPoint(map, latitude, longitude, name, html, icon) {//add a waypoint to the map

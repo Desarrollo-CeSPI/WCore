@@ -5,6 +5,11 @@
       <title>Weather Station's LP</title>
    </head>
    <body>
+
+      <script type="text/javascript" src="//www.google.com/jsapi"></script>
+
+
+      
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/underscore-min.js"></script>
@@ -14,6 +19,10 @@
     <script type="text/javascript" src="js/stationmodel-vars.js"></script>    
     <script type="text/javascript" src="js/stationmodel-basic-functions.js"></script>    
     <script type="text/javascript" src="js/stationmodel-map.js"></script>
+   
+    <script type="text/javascript" src="js/googlechart.js"></script>	
+   	<script type="text/javascript" src="js/stationmodel-chart.js"></script>
+   
 
 
 		<script type="text/javascript" src="./js/jquery.mmenu.min.all.js"></script>
@@ -139,6 +148,23 @@
  
     <div id="map-canvas"></div>
 
+      <div id="stats">
+	   <table border="0" width="100%">
+	      <tr>
+	         <td width="80%" height="400">
+	            <div id="chart_div"></div>
+	         </td>
+	         <td width="20%" valign="top">
+	            <div id="types">
+	               <li><a id="link-item" href="#" onclick="javascript:chart_generate_link('Temperatura');">Temperatura</a></li>
+	               <li><a id="link-item" href="#" onclick="javascript:chart_generate_link('Humedad');">Humedad</a></li>
+	               <li><a id="link-item" href="#" onclick="javascript:chart_generate_link('Presion');">Presion</a></li>
+	            </div>
+	         </td>
+	      </tr>
+	   </table>      	
+      </div>
+      
 	  <div id="logo_container">
 		  <img id="logo" src="./img/logo.gif">
 	  </div>

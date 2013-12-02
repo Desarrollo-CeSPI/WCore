@@ -1,7 +1,7 @@
 #stats{
 	z-index:9999;
-	margin-right:20%;
-	margin-top:-20%;
+	top:1em;
+	margin-right:10em;
 	position:absolute;
 	background:#000000;	
 	opacity:0.8;
@@ -10,6 +10,18 @@
 	border-radius: 2em;
 	text-align:center;
 	display:none;
+	width:80em;
+}
+
+#loading{
+	display:block;
+	top:50%;
+	left:50%;
+	position:absolute;
+}
+
+#background_chart{
+	background:#FFFFFF;
 }
 
 #types{
@@ -30,7 +42,7 @@
 	font-size:1.2em;	
 }
 
-#close_chart{
+#close{
 	float:right;
 	color:#FFFFFF;
 	margin-right:1em;

@@ -55,7 +55,7 @@ var stations = new StationsModel;
 //QUERY the fusion table LIST of ALL Waypoints
 
 
-
+open('loading');
 //$.getJSON("https://www.googleapis.com/fusiontables/v1/query?sql=SELECT%20*%20FROM%201iTD0jP1uZYzzCaHCkR_ue7lyeQfocXoDXgctRaY%20WHERE%20ID%20=%201&key=AIzaSyA72Nn_S7CPB0eYkpUZACopItP3pqG4wSs", function( data ) {
 $.ajax({
    type: 'GET',
@@ -65,11 +65,16 @@ $.ajax({
       $.each( data.items, function( i, item ) {
          stations.addStation(item);//Add Station to the "list of Stations" (an array)
       });
-
+      close('loading');
       title = data['station']['name'];
       stations.printStations();//Call for print Stations on the chart*/
    }
+   
+
 });
+
+
+
 
 
 

@@ -33,10 +33,12 @@
     <link rel="stylesheet" type="text/css" href="css/maps.css" />
 	<link rel="stylesheet" type="text/css" href="css/header.css" />
 
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.css" />
+
 	<script id="template-list-links" type="text/x-handlebars-template">
 		{{#station}}
 			<li>
-				<a id="link-item" href="#" onclick="javascript:myClick({{n}});"><img src="./img/{{id}}.png"></a>&nbsp;<a href="javascript:close_menu();open_chart('stats');initialize_chart({{id}}, 'Temperatura');"><img src="./img/chart.png"></a>&nbsp;<a id="link-item" href="#" onclick="javascript:myClick({{n}});">{{name}}</a>
+				<a id="link-item" href="#" onclick="javascript:myClick({{n}});"><img src="./img/{{id}}.png"></a>&nbsp;<a href="javascript:close_menu();open('stats');initialize_chart({{id}}, 'Temperatura');"><i class="fa fa-bar-chart-o fa-2x fa-inverse"></i></a>&nbsp;<a id="link-item" href="#" onclick="javascript:myClick({{n}});">{{name}}</a>
 			</li>
 		{{/station}}
 	</script>   
@@ -47,7 +49,7 @@
 					<div id="wp-minicontainer">
 						<div id="wp-big">{{name}}</div>
 						<div id="wp-web"><a href="{{url}}">WEB</a></div>
-						<a href="javascript:open_chart('stats');initialize_chart({{id}}, 'Temperatura');"><img src="./img/chart.png"></a>
+						<a href="javascript:open('stats');initialize_chart({{id}}, 'Temperatura');"><i class="fa fa-bar-chart-o fa-1x fa-inverse"></i></a>
 						<div id="wp-fecha">{{update}}</div>
 						<div style="clear:Both"></div>
 				</div>
@@ -109,11 +111,13 @@
 	           <a id="link-item" href="#" onclick="javascript:initialize_chart('', 'Temperatura');">Temperatura</a>&nbsp;&nbsp;&nbsp;
 	           <a id="link-item" href="#" onclick="javascript:initialize_chart('', 'Humedad');">Humedad</a>&nbsp;&nbsp;&nbsp;
 	           <a id="link-item" href="#" onclick="javascript:initialize_chart('', 'Presion');">Presion</a>
-	           <div id="close_chart"><a href="javascript:close_chart('stats');">X</a></div>
+	           <div id="close"><a href="javascript:close('stats');"><i class="fa fa-times-circle fa-2x"></i></a></div>
 	        </div>  	
 
-	        <div id="chart_div"></div>
-	        
+	        <div id="background_chart">
+	        	<div id="chart_div"></div>
+	        </div>
+	        <div id="loading"><i class="fa fa-refresh fa-spin fa-5x"></i></div>
 
       </div>
       

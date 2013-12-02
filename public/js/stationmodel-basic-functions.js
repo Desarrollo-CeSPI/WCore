@@ -14,11 +14,11 @@ function zeroPad(num, places) {
   return Array(+(zero > 0 && zero)).join("0") + num;
 }
 
-function close_chart(id) {
+function close(id) {
   document.getElementById(id).style.display = 'none';
 }
 
-function open_chart(id) {
+function open(id) {
   document.getElementById(id).style.display = 'block';
 }
 

@@ -1,7 +1,7 @@
 #stats{
 	z-index:9999;
 	margin-right:20%;
-	margin-top:-25%;
+	margin-top:-20%;
 	position:absolute;
 	background:#000000;	
 	opacity:0.8;
@@ -27,7 +27,7 @@
 #types a{
 	text-decoration:none;
 	color:#FFFFFF;
-	font-size:1.6em;	
+	font-size:1.2em;	
 }
 
 #close_chart{

@@ -8,7 +8,7 @@
         // Set chart options
         var options = {'title':title, colors: [aColor],
                        'width':$(window).width()/2,
-                       'height':300};
+                       'height':$(window).height()/2};
 
         // Instantiate and draw our chart, passing in some options.
         var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));

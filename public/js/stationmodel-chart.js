@@ -1,4 +1,10 @@
+var station = null;
+
 function initialize_chart(anStation, type){
+   if (anStation){
+      station = anStation;   
+   }
+   
    var title = '';
    var aColor = '#000000';
    var StationsModel = Backbone.Model.extend({
@@ -53,7 +59,7 @@ var stations = new StationsModel;
 //$.getJSON("https://www.googleapis.com/fusiontables/v1/query?sql=SELECT%20*%20FROM%201iTD0jP1uZYzzCaHCkR_ue7lyeQfocXoDXgctRaY%20WHERE%20ID%20=%201&key=AIzaSyA72Nn_S7CPB0eYkpUZACopItP3pqG4wSs", function( data ) {
 $.ajax({
    type: 'GET',
-   url: url_station + anStation,
+   url: url_station + station,
    dataType: "jsonp",
    success: function(data) {
       $.each( data.items, function( i, item ) {

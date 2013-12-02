@@ -7,7 +7,7 @@
 
         // Set chart options
         var options = {'title':title, colors: [aColor],
-                       'width':900,
+                       'width':$(window).width()/2,
                        'height':300};
 
         // Instantiate and draw our chart, passing in some options.

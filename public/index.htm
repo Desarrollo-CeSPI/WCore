@@ -6,10 +6,10 @@
    </head>
    <body>
 
-      <script type="text/javascript" src="//www.google.com/jsapi"></script>
+    <script type="text/javascript" src="//www.google.com/jsapi"></script>
+    <script type="text/javascript" src="js/googlechart.js"></script>	
+   	<script type="text/javascript" src="js/stationmodel-chart.js"></script>
 
-
-      
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/underscore-min.js"></script>
@@ -20,59 +20,15 @@
     <script type="text/javascript" src="js/stationmodel-basic-functions.js"></script>    
     <script type="text/javascript" src="js/stationmodel-map.js"></script>
    
-    <script type="text/javascript" src="js/googlechart.js"></script>	
-   	<script type="text/javascript" src="js/stationmodel-chart.js"></script>
-   
 
 
-		<script type="text/javascript" src="./js/jquery.mmenu.min.all.js"></script>
-		<link type="text/css" rel="stylesheet" href="./css/menu_slider.css" />
-		<link type="text/css" rel="stylesheet" href="./css/jquery.mmenu.all.css" />
-		<script type="text/javascript">
-			$(function() {
-				$("nav#menu")
-				   .mmenu()
-				   .on(
-				      "opened.mm",
-				      function()
-				      {
-				         document.getElementById("map-canvas").style.width="79%";
-				      })
-				   .on(
-				      "closed.mm",
-				      function()
-				      {
-				         document.getElementById("map-canvas").style.width="100%";
-				      })				   
-			});
-
-			function abrir_menu(){
-			           $("#menu")
-					     .mmenu()
-					     .trigger( "open.mm" )
-					     .on( "open.mm" );  
-			}
-			function cerrar_menu(){
-			           $("#menu")
-					     .mmenu()
-					     .trigger( "close.mm" )
-					     .on( "close.mm" );  
-			}			
-			jQuery(document).ready(function ($) {
-				if ($(window).width() > 900) {
-					abrir_menu();
-				}	
-			});
-			$( window ).resize(function() {
-				if ($(window).width() > 900) {
-					abrir_menu();
-				}
-			});
-
-		</script>
+	<script type="text/javascript" src="./js/jquery.mmenu.min.all.js"></script>
+	<link type="text/css" rel="stylesheet" href="./css/menu_slider.css" />
+	<link type="text/css" rel="stylesheet" href="./css/jquery.mmenu.all.css" />
 
 
     <link rel="stylesheet" type="text/css" href="css/menu.css" />
+    <link rel="stylesheet" type="text/css" href="css/chart.css" />    
     <link rel="stylesheet" type="text/css" href="css/waypoint.css" />
     <link rel="stylesheet" type="text/css" href="css/maps.css" />
 	<link rel="stylesheet" type="text/css" href="css/header.css" />
@@ -80,7 +36,7 @@
 	<script id="template-list-links" type="text/x-handlebars-template">
 		{{#station}}
 			<li>
-				<a id="link-item" href="#" onclick="javascript:myClick({{n}});"><img src="./img/{{id}}.png"></a>&nbsp;<a href="./grafico.htm?station={{id}}&type=Temperatura"><img src="./img/chart.png"></a>&nbsp;<a id="link-item" href="#" onclick="javascript:myClick({{n}});">{{name}}</a>
+				<a id="link-item" href="#" onclick="javascript:myClick({{n}});"><img src="./img/{{id}}.png"></a>&nbsp;<a href="javascript:close_menu();open_chart('stats');initialize_chart({{id}}, 'Temperatura');"><img src="./img/chart.png"></a>&nbsp;<a id="link-item" href="#" onclick="javascript:myClick({{n}});">{{name}}</a>
 			</li>
 		{{/station}}
 	</script>   
@@ -91,7 +47,7 @@
 					<div id="wp-minicontainer">
 						<div id="wp-big">{{name}}</div>
 						<div id="wp-web"><a href="{{url}}">WEB</a></div>
-						<a href="./grafico.htm?station={{id}}&type=Temperatura"><img src="./img/chart.png"></a>
+						<a href="javascript:open_chart('stats');initialize_chart({{id}}, 'Temperatura');"><img src="./img/chart.png"></a>
 						<div id="wp-fecha">{{update}}</div>
 						<div style="clear:Both"></div>
 				</div>
@@ -127,11 +83,11 @@
 
 
 
-		<div id="container">
+	<div id="container">
 
 		<div id="page">
 
-			<div id="header" onclick="abrir_menu();">
+			<div id="header" onclick="open_menu();">
 				<div id="fondo"></div>
 
 
@@ -143,26 +99,22 @@
 		  		</ul>
 	  		</nav>
 
-		</div>	
+	</div>	
 
  
     <div id="map-canvas"></div>
 
       <div id="stats">
-	   <table border="0" width="100%">
-	      <tr>
-	         <td width="80%" height="400">
-	            <div id="chart_div"></div>
-	         </td>
-	         <td width="20%" valign="top">
-	            <div id="types">
-	               <li><a id="link-item" href="#" onclick="javascript:chart_generate_link('Temperatura');">Temperatura</a></li>
-	               <li><a id="link-item" href="#" onclick="javascript:chart_generate_link('Humedad');">Humedad</a></li>
-	               <li><a id="link-item" href="#" onclick="javascript:chart_generate_link('Presion');">Presion</a></li>
-	            </div>
-	         </td>
-	      </tr>
-	   </table>      	
+	        <div id="types">
+	           <a id="link-item" href="#" onclick="javascript:initialize_chart('', 'Temperatura');">Temperatura</a>&nbsp;&nbsp;&nbsp;
+	           <a id="link-item" href="#" onclick="javascript:initialize_chart('', 'Humedad');">Humedad</a>&nbsp;&nbsp;&nbsp;
+	           <a id="link-item" href="#" onclick="javascript:initialize_chart('', 'Presion');">Presion</a>
+	           <div id="close_chart"><a href="javascript:close_chart('stats');">X</a></div>
+	        </div>  	
+
+	        <div id="chart_div"></div>
+	        
+
       </div>
       
 	  <div id="logo_container">
@@ -173,23 +125,7 @@
       	initialize_map();
     </script>
 
-
-
-
-
-
 </div>
-
-
-
-
-
-
-
-
-
-
-
 
 	</body>
 </html>

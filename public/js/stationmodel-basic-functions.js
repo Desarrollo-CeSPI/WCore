@@ -14,7 +14,56 @@ function zeroPad(num, places) {
   return Array(+(zero > 0 && zero)).join("0") + num;
 }
 
-function args( name ){
+function close_chart(id) {
+  document.getElementById(id).style.display = 'none';
+}
+
+function open_chart(id) {
+  document.getElementById(id).style.display = 'block';
+}
+
+      $(function() {
+        $("nav#menu")
+           .mmenu()
+           .on(
+              "opened.mm",
+              function()
+              {
+                 document.getElementById("map-canvas").style.width="79%";
+              })
+           .on(
+              "closed.mm",
+              function()
+              {
+                 document.getElementById("map-canvas").style.width="100%";
+              })           
+      });
+
+      function open_menu(){
+                 $("#menu")
+               .mmenu()
+               .trigger( "open.mm" )
+               .on( "open.mm" );  
+      }
+      function close_menu(){
+                 $("#menu")
+               .mmenu()
+               .trigger( "close.mm" )
+               .on( "close.mm" );  
+      }     
+      jQuery(document).ready(function ($) {
+        if ($(window).width() > 900) {
+          open_menu();
+        } 
+      });
+      $( window ).resize(function() {
+        if ($(window).width() > 900) {
+          close_menu();
+        }
+      });
+
+
+/*function args( name ){
   var regexS = "[\\?&]"+name+"=([^&#]*)";
   var regex = new RegExp ( regexS );
   var tmpURL = window.location.href;
@@ -23,9 +72,9 @@ function args( name ){
     return"";
   else
     return results[1];
-}
+}*/
 
 
-function chart_generate_link(type){
+/*function chart_generate_link(type){
   location.href = "./grafico.htm?station=" + args("station") + "&type=" + type;
-}
+}*/

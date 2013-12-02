@@ -1,3 +1,37 @@
 #stats{
 	z-index:9999;
+	margin-right:20%;
+	margin-top:-25%;
+	position:absolute;
+	background:#000000;	
+	opacity:0.8;
+	filter:alpha(opacity=80); /* For IE8 and earlier */	
+	padding:2em;
+	border-radius: 2em;
+	text-align:center;
+	display:none;
+}
+
+#types{
+	background:#505050;
+	-webkit-border-top-left-radius: 20px;
+	-webkit-border-top-right-radius: 20px;
+	-moz-border-radius-topleft: 20px;
+	-moz-border-radius-topright: 20px;
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
+	padding:0.6em;
+	filter:alpha(opacity=50); /* For IE8 and earlier */	
+}
+
+#types a{
+	text-decoration:none;
+	color:#FFFFFF;
+	font-size:1.6em;	
+}
+
+#close_chart{
+	float:right;
+	color:#FFFFFF;
+	margin-right:1em;
 }

@@ -1,4 +1,4 @@
-# WCore
+# WCore 
 	
 	Created for use with WUploader and WClient
 

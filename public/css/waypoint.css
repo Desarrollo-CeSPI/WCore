@@ -88,6 +88,8 @@
 	font-weight: bold;
 	width:30%;
 	float:right;
+	white-space:nowrap;
+	margin-right:1.5em;
 }
 
 

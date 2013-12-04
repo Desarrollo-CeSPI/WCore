@@ -38,7 +38,7 @@
 	<script id="template-list-links" type="text/x-handlebars-template">
 		{{#station}}
 			<li>
-				<a id="link-item" href="#" onclick="javascript:myClick({{n}});"><img src="./img/{{id}}.png"></a>&nbsp;<a href="javascript:close_menu();open('stats');initialize_chart({{id}}, 'Temperatura');"><i class="fa fa-bar-chart-o fa-2x fa-inverse"></i></a>&nbsp;<a id="link-item" href="#" onclick="javascript:myClick({{n}});">{{name}}</a>
+				<a id="link-item" href="#" onclick="javascript:close_menu();myClick({{n}});"><img src="./img/{{id}}.png"></a>&nbsp;<a href="javascript:close_menu();open('container_stats');initialize_chart({{id}}, 'Temperatura');"><i class="fa fa-bar-chart-o fa-2x fa-inverse"></i></a>&nbsp;<a id="link-item" href="#" onclick="javascript:close_menu();myClick({{n}});">{{name}}</a>
 			</li>
 		{{/station}}
 	</script>   
@@ -48,8 +48,8 @@
 			<div class="wp-container">
 					<div id="wp-minicontainer">
 						<div id="wp-big">{{name}}</div>
-						<div id="wp-web"><a href="{{url}}">WEB</a></div>
-						<a href="javascript:open('stats');initialize_chart({{id}}, 'Temperatura');"><i class="fa fa-bar-chart-o fa-1x fa-inverse"></i></a>
+						<div id="wp-web"><a target="_blank" href="{{url}}">WEB</a></div>
+						<a href="javascript:open('container_stats');initialize_chart({{id}}, 'Temperatura');"><i class="fa fa-bar-chart-o fa-1x fa-inverse"></i></a>
 						<div id="wp-fecha">{{update}}</div>
 						<div style="clear:Both"></div>
 				</div>
@@ -106,18 +106,20 @@
  
     <div id="map-canvas"></div>
 
+    <div id="container_stats">
       <div id="stats">
 	        <div id="types">
 	           <a id="link-item" href="#" onclick="javascript:initialize_chart('', 'Temperatura');">Temperatura</a>&nbsp;&nbsp;&nbsp;
 	           <a id="link-item" href="#" onclick="javascript:initialize_chart('', 'Humedad');">Humedad</a>&nbsp;&nbsp;&nbsp;
 	           <a id="link-item" href="#" onclick="javascript:initialize_chart('', 'Presion');">Presion</a>
-	           <div id="close"><a href="javascript:close('stats');"><i class="fa fa-times-circle fa-2x"></i></a></div>
+	           <div id="close"><a href="javascript:close('container_stats');"><i class="fa fa-times-circle fa-2x"></i></a></div>
 	        </div>  	
 
 	        <div id="background_chart">
+	        	<div id="loading"><i class="fa fa-refresh fa-spin fa-5x"></i></div>
 	        	<div id="chart_div"></div>
 	        </div>
-	        <div id="loading"><i class="fa fa-refresh fa-spin fa-5x"></i></div>
+	  </div>      
 
       </div>
       

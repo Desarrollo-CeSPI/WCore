@@ -3,7 +3,7 @@ var markers = [];//Array for save the object MARKER in the maps, to can link on 
 var infowindows = [];//For can close all infowindows...
 function initialize_google() {
   var mapOptions = {
-
+    
     panControlOptions: {
       position: google.maps.ControlPosition.LEFT_TOP
     },
@@ -22,8 +22,8 @@ function initialize_google() {
       mapOptions);
 
   //integrate the DIV "Header" into Google MAPS
-  var stats = document.getElementById('stats');
-  map.controls[google.maps.ControlPosition.RIGHT_CENTER].push(stats);
+  var stats = document.getElementById('container_stats');
+  map.controls[google.maps.ControlPosition.TOP_LEFT].push(stats);
 
   //integrate the DIV "Header" into Google MAPS
   var header = document.getElementById('logo_container');

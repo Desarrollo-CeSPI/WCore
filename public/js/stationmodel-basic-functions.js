@@ -1,10 +1,11 @@
 function timeStampForHuman(aTimeStamp){
   var timeDate = new Date(aTimeStamp * 1000);
   var date = new Array();
+  aTimeStamp = aTimeStamp - 3*60*60;
   date['date'] = timeDate.getUTCDate();
   date['month'] = timeDate.getUTCMonth() + 1;
   date['year'] = timeDate.getUTCFullYear();
-  date['hours'] = timeDate.getUTCHours()-3;
+  date['hours'] = timeDate.getUTCHours();
   date['minutes'] = timeDate.getUTCMinutes();
   return date;
 }

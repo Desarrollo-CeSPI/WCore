@@ -12,6 +12,7 @@ function initialize_chart(anStation, type, from, to){
    }else{
       stats = type;
    }
+
    var title = '';
    var aColor = '#000000';
    var StationsModel = Backbone.Model.extend({
@@ -68,16 +69,20 @@ var stations = new StationsModel;
 open('loading');
 close('chart_div');
 
-
-if (from == to){
+if (from == null || to == null){
    date_from = (new Date).getTime() / 1000;
    date_to = (new Date).getTime() / 1000;
-   date_from = date_from - (60*60*24);
+   date_from = date_from - (60*60*24);   
 }else{
-   date_from = new Date(from).getTime() / 1000;
-   date_to = new Date(to).getTime() / 1000;
+   if (from == to){
+      date_from = (new Date(from)).getTime() / 1000;
+      date_to = (new Date(to)).getTime() / 1000;
+      date_from = date_from - (60*60*24);
+   }else{
+      date_from = new Date(from).getTime() / 1000;
+      date_to = new Date(to).getTime() / 1000;
+   }
 }
-
 
 $.ajax({
    type: 'GET',

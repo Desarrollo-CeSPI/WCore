@@ -1,7 +1,7 @@
 function timeStampForHuman(aTimeStamp){
+  aTimeStamp = aTimeStamp - (3*60*60);
   var timeDate = new Date(aTimeStamp * 1000);
   var date = new Array();
-  aTimeStamp = aTimeStamp - 3*60*60;
   date['date'] = timeDate.getUTCDate();
   date['month'] = timeDate.getUTCMonth() + 1;
   date['year'] = timeDate.getUTCFullYear();

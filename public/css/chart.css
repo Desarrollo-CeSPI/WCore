@@ -7,6 +7,7 @@
 	filter:alpha(opacity=80); /* For IE8 and earlier */
 }
 
+
 #stats{
 	background:#000000;	
 	opacity:0.99;
@@ -27,12 +28,14 @@
 	clear:both;
 }
 
+
 #background_chart{
 	background:#FFFFFF;
 }
 
 #types{
 	background:#505050;
+	color:#FFFFFF;
 	-webkit-border-top-left-radius: 20px;
 	-webkit-border-top-right-radius: 20px;
 	-moz-border-radius-topleft: 20px;

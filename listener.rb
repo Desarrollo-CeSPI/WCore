@@ -59,13 +59,13 @@ def write(data, token)
 	return_message
 end
 
-def read(data, station)
+def read(data, station, from, to)
 	puts station
 	case data
 		when 'waypoints'
 			{ stations: weather_stations }.to_json
 		when 'station'
-			{ items: WeatherDatum.where(id_station: station), station: WeatherStation.find_by(id_station: station) }.to_json
+			{ items: WeatherDatum.where("id_station = #{station} AND captured_at >= #{from} AND captured_at <= #{to}"), station: WeatherStation.find_by(id_station: station) }.to_json
 	end	
 end
 
@@ -92,6 +92,6 @@ post '/upload' do
 end
 
 get '/download', provides: :json do
-  json = read(params[:data], params[:station])
+  json = read(params[:data], params[:station], params[:from], params[:to])
   "#{params[:callback]}(#{json});"
 end

@@ -1,10 +1,11 @@
 var station = null;
 
-function initialize_chart(anStation, type){
+function initialize_chart(anStation, type, from, to){
+
    if (anStation){
       station = anStation;   
    }
-   
+
    var title = '';
    var aColor = '#000000';
    var StationsModel = Backbone.Model.extend({
@@ -47,7 +48,6 @@ function initialize_chart(anStation, type){
             var stringFecha = fecha['date'] + '/' + fecha['month'] + ' ' + fecha['hours'] + ':' + zeroPad(fecha['minutes'], 2);
             anArray.push([stringFecha, parseInt(data[1])]);
          });
-
          drawChart(title, anArray, aColor);
 
 
@@ -61,10 +61,21 @@ var stations = new StationsModel;
 
 open('loading');
 close('chart_div');
-//$.getJSON("https://www.googleapis.com/fusiontables/v1/query?sql=SELECT%20*%20FROM%201iTD0jP1uZYzzCaHCkR_ue7lyeQfocXoDXgctRaY%20WHERE%20ID%20=%201&key=AIzaSyA72Nn_S7CPB0eYkpUZACopItP3pqG4wSs", function( data ) {
+
+
+if (from == to){
+   date_from = (new Date).getTime() / 1000;
+   date_to = (new Date).getTime() / 1000;
+   date_from = date_from - (60*60*24);
+}else{
+   date_from = new Date(from).getTime() / 1000;
+   date_to = new Date(to).getTime() / 1000;
+}
+
+
 $.ajax({
    type: 'GET',
-   url: url_station + station,
+   url: url_station + station + '&from=' + date_from + "&to=" + date_to,
    dataType: "jsonp",
    success: function(data) {
       $.each( data.items, function( i, item ) {

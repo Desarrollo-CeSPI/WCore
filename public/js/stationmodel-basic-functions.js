@@ -4,8 +4,8 @@ function timeStampForHuman(aTimeStamp){
   date['date'] = timeDate.getUTCDate();
   date['month'] = timeDate.getUTCMonth() + 1;
   date['year'] = timeDate.getUTCFullYear();
-  date['hours'] = timeDate.getHours();
-  date['minutes'] = timeDate.getMinutes();
+  date['hours'] = timeDate.getUTCHours()-3;
+  date['minutes'] = timeDate.getUTCMinutes();
   return date;
 }
 

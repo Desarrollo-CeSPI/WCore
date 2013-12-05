@@ -69,7 +69,7 @@ var stations = new StationsModel;
 open('loading');
 close('chart_div');
 
-if (from == null || to == null){
+if (!from || !to){
    date_from = new Date().getTime() / 1000;
    date_to = new Date().getTime() / 1000;
    date_from = date_from - (60*60*24);   

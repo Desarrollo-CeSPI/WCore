@@ -1,4 +1,5 @@
 var station = null;
+var stats = 'Temperatura';
 
 function initialize_chart(anStation, type, from, to){
 
@@ -6,6 +7,11 @@ function initialize_chart(anStation, type, from, to){
       station = anStation;   
    }
 
+   if (type == ''){
+      type = stats;
+   }else{
+      stats = type;
+   }
    var title = '';
    var aColor = '#000000';
    var StationsModel = Backbone.Model.extend({

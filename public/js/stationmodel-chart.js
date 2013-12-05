@@ -70,8 +70,8 @@ open('loading');
 close('chart_div');
 
 if (from == null || to == null){
-   date_from = (new Date).getTime() / 1000;
-   date_to = (new Date).getTime() / 1000;
+   date_from = new Date().getTime() / 1000;
+   date_to = new Date().getTime() / 1000;
    date_from = date_from - (60*60*24);   
 }else{
    if (from == to){

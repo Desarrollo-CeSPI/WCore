@@ -35,12 +35,16 @@ function initialize_chart(anStation, type, from, to){
             break;
           case 'Presion':
             array_stations.push([newStation['captured_at'], newStation['bar']]);
-            aColor = '#F1C40F';
+            aColor = '#0404B4';
             break;            
           case 'Viento':
             array_stations.push([newStation['captured_at'], newStation['wind_speed']]);
             aColor = '#00B0F6';
-            break;            
+            break;  
+          case 'UVI':
+            array_stations.push([newStation['captured_at'], newStation['uv_dose']]);
+            aColor = '#D7DF01';
+            break;                        
           }            
 
          this.set({stations:array_stations});

@@ -48,7 +48,7 @@ $.ajax({
          
         var fecha = timeStampForHuman(station['last_data']['captured_at']);
         var stringFecha = fecha['date'] + '/' + fecha['month'] + '/' + fecha['year'] + ' ' + fecha['hours'] + ':' + fecha['minutes'];
-        info.waypoint.push({id: station['id'], name: station['name'], adress: station['adress'], update: stringFecha, temperatura: station['last_data']['temperature'], humedad: station['last_data']['humidity'], presion: station['last_data']['bar'], velocidad: station['last_data']['wind_speed'], direccion: station['last_data']['wind_direction'], uvi: station['uv_dose']}, url: station['url']});
+        info.waypoint.push({id: station['id'], name: station['name'], adress: station['adress'], update: stringFecha, temperatura: station['last_data']['temperature'], humedad: station['last_data']['humidity'], presion: station['last_data']['bar'], velocidad: station['last_data']['wind_speed'], direccion: station['last_data']['wind_direction'], uvi: station['last_data']['uv_dose'], url: station['url']});
        
         attachPoint(map, station['lat'], station['long'], station['name'], template(info), './img/' + station['id'] + '.png');//Add Waypoint into the map
         stations.addStation(station);//Add Station to the "list of Stations" (an array)

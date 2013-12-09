@@ -48,7 +48,7 @@ function attachPoint(map, latitude, longitude, name, html, icon) {//add a waypoi
   marker.setIcon(icon);  
 
   var infowindow = new google.maps.InfoWindow({
-    content: '<div class = "MarkerPopUp" style="width: 18em; height: 14em;"><div align="center" class = "MarkerContext"><div style="align:center;">' + html + '<br></div></div></div>'
+    content: '<div class = "MarkerPopUp" style="width: 18em; height: 16em;"><div align="center" class = "MarkerContext"><div style="align:center;">' + html + '<br></div></div></div>'
   });
 
   google.maps.event.addListener(marker, 'click', function() {

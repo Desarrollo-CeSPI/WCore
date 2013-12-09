@@ -1,8 +1,4 @@
-.wp-container{
-	
-}
-
-.wp-block-temperatura{
+.wp-item{
 	float:left;  
 	text-align:left;
 	width:100%;
@@ -10,46 +6,8 @@
 	white-space:nowrap;
 }
 
-.wp-block-humedad{
-	float:left;  
-	text-align:center;
-	width:100%;
-	height:1.5em;
-	white-space:nowrap;
-}
-
-.wp-block-presion{
-	float:left;  
-	text-align:left;
-	width:100%;
-	height:1.5em;	
-	white-space:nowrap;
-}
-
-.wp-block-uvi{
-	float:left;  
-	text-align:center;
-	width:100%;
-	height:1.5em;
-	white-space:nowrap;	
-}
-
-.wp-block-velocidad{
-	float:left;  
-	text-align:center;
-	width:100%;
-	height:1.5em;
-	white-space:nowrap;	
-}
 .gm-style-iw{ overflow: hidden !important;}
 
-.wp-block-direccion{
-	float:left;  
-	text-align:center;
-	width:100%;
-	height:1.5em;
-	white-space:nowrap;
-}
 
 #wp-minicontainer{
 	width:100%;

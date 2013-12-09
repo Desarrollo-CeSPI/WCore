@@ -41,8 +41,8 @@ function initialize_chart(anStation, type, from, to){
             array_stations.push([newStation['captured_at'], newStation['wind_speed']]);
             aColor = '#00B0F6';
             break;  
-          case 'UVI':
-            array_stations.push([newStation['captured_at'], newStation['uv_dose']]);
+          case 'UV':
+            array_stations.push([newStation['captured_at'], newStation['uv']]);
             aColor = '#D7DF01';
             break;                        
           }            

@@ -57,28 +57,28 @@
 						<hr>
 				</div>
 
-				<div class="wp-block-temperatura">
+				<div class="wp-item">
 					<div class="wp-normal" align="left">Temperatura {{temperatura}} °C</div>
 				</div>
 
-				<div class="wp-block-humedad">
+				<div class="wp-item">
 					<div class="wp-normal" align="left">Humedad {{humedad}} %</div>
 				</div>
 
-				<div class="wp-block-presion">
+				<div class="wp-item">
 					<div class="wp-normal" align="left">Presión atmosférica {{presion}} hPa</div>
 				</div>
 
-				<div class="wp-block-velocidad">
+				<div class="wp-item">
 					<div class="wp-normal" align="left">Velocidad del viento {{velocidad}} km/h</div>
 				</div>
 
-				<div class="wp-block-direccion">
+				<div class="wp-item">
 					<div class="wp-normal" align="left">Dirección del viento {{direccion}}</div>
 				</div>
 
-				<div class="wp-block-uvi">
-					<div class="wp-normal" align="left">Indice UV {{uvi}}</div>
+				<div class="wp-item">
+					<div class="wp-normal" align="left">Indice UV {{uv}}</div>
 				</div>
 
 				<div style="clear:Both"></div>
@@ -120,7 +120,7 @@
 	           <a id="link-item" href="#" onclick="javascript:initialize_chart('', 'Humedad', '', '');">Humedad</a>&nbsp;&nbsp;&nbsp;
 	           <a id="link-item" href="#" onclick="javascript:initialize_chart('', 'Presion', '', '');">Presion</a>&nbsp;&nbsp;&nbsp;
 	           <a id="link-item" href="#" onclick="javascript:initialize_chart('', 'Viento', '', '');">Viento</a>&nbsp;&nbsp;&nbsp;
-	           <a id="link-item" href="#" onclick="javascript:initialize_chart('', 'UVI', '', '');">UVI</a>
+	           <a id="link-item" href="#" onclick="javascript:initialize_chart('', 'UV', '', '');">UV</a>
 	           <div id="close"><a href="javascript:close('container_stats');"><i class="fa fa-times-circle fa-2x"></i></a></div>
 	        <p>Desde: <input type="text" id="datepicker_from" size="1">&nbsp;Hasta: <input type="text" id="datepicker_to" size="1">&nbsp;<input type="submit" onclick="javascript:initialize_chart('', '', document.getElementById('datepicker_from').value, document.getElementById('datepicker_to').value);" value="Graficar"></p>   
 	        </div>  	

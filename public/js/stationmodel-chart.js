@@ -79,12 +79,12 @@ if (!from || !to){
    date_from = date_from - (60*60*24);   
 }else{
    if (from == to){
-      date_from = (new Date(from)).getTime() / 1000;
-      date_to = (new Date(to)).getTime() / 1000;
+      date_from = (new Date(from.split("/")[2] + "/" + from.split("/")[1] + "/" + from.split("/")[0])).getTime() / 1000;
+      date_to = (new Date(to.split("/")[2] + "/" + to.split("/")[1] + "/" + to.split("/")[0])).getTime() / 1000;
       date_from = date_from - (60*60*24);
    }else{
-      date_from = new Date(from).getTime() / 1000;
-      date_to = new Date(to).getTime() / 1000;
+      date_from = new Date(from.split("/")[2] + "/" + from.split("/")[1] + "/" + from.split("/")[0]).getTime() / 1000;
+      date_to = new Date(to.split("/")[2] + "/" + to.split("/")[1] + "/" + to.split("/")[0]).getTime() / 1000;
    }
 }
 

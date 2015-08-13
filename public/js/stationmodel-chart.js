@@ -4,7 +4,7 @@ var stats = 'Temperatura';
 function initialize_chart(anStation, type, from, to){
 
    if (anStation){
-      station = anStation;   
+      station = anStation;
    }
 
    if (type == ''){
@@ -17,11 +17,11 @@ function initialize_chart(anStation, type, from, to){
    var aColor = '#000000';
    var StationsModel = Backbone.Model.extend({
       initialize: function(){
-      
+
       },
       defaults:{
          stations:[]
-      },      
+      },
       addStation: function(newStation, infoStation){//Add a Station to the list of Stations
          var array_stations = this.get('stations');
          switch (type){
@@ -36,32 +36,30 @@ function initialize_chart(anStation, type, from, to){
           case 'Presion':
             array_stations.push([newStation['captured_at'], newStation['bar']]);
             aColor = '#0404B4';
-            break;            
+            break;
           case 'Viento':
             array_stations.push([newStation['captured_at'], newStation['wind_speed']]);
             aColor = '#00B0F6';
-            break;  
+            break;
           case 'UV':
             array_stations.push([newStation['captured_at'], newStation['uv']]);
             aColor = '#D7DF01';
-            break;                        
-          }            
+            break;
+          }
 
          this.set({stations:array_stations});
-      },      
-      printStations: function(){//This function prints the right menu of Waypoints 
+      },
+      printStations: function(){//This function prints the right menu of Waypoints
          var array_stations = this.get('stations');
          var i = 0;
          var anArray = new Array();
-         anArray.push(["Year", type]);          
+         anArray.push(["Year", type]);
          array_stations.forEach(function(data) {//data for template
             var fecha = timeStampForHuman(data[0]);
             var stringFecha = fecha['date'] + '/' + fecha['month'] + ' ' + fecha['hours'] + ':' + zeroPad(fecha['minutes'], 2);
             anArray.push([stringFecha, parseInt(data[1])]);
          });
          drawChart(title, anArray, aColor);
-
-
       }
    });
 
@@ -76,7 +74,7 @@ close('chart_div');
 if (!from || !to){
    date_from = new Date().getTime() / 1000;
    date_to = new Date().getTime() / 1000;
-   date_from = date_from - (60*60*24);   
+   date_from = date_from - (60*60*24);
 }else{
    if (from == to){
       date_from = (new Date(from.split("/")[2] + "/" + from.split("/")[1] + "/" + from.split("/")[0])).getTime() / 1000;
@@ -101,7 +99,7 @@ $.ajax({
       title = data['station']['name'];
       stations.printStations();//Call for print Stations on the chart*/
    }
-   
+
 
 });
 

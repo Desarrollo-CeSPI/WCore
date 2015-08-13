@@ -1,99 +1,92 @@
 <!DOCTYPE html>
 <html lang="es">
-   <head>
-      <meta name="viewport" content="initial-scale=1, maximum-scale=1, width=device-width, user-scalable=no" charset="utf-8">
-      <title>Weather Station's LP</title>
-   </head>
-   <body>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, width=device-width, user-scalable=no" charset="utf-8">
+    <title>Estaci&oacute;n meteorol&oacute;gica</title>
+  </head>
+  <body>
+  <link rel="stylesheet" href="./css/menu_slider.css" />
+  <link rel="stylesheet" href="./css/jquery.mmenu.all.css" />
+  <link rel="stylesheet" href="css/jquery-ui.css">
+  <link rel="stylesheet" href="css/menu.css" />
+  <link rel="stylesheet" href="css/chart.css" />
+  <link rel="stylesheet" href="css/waypoint.css" />
+  <link rel="stylesheet" href="css/maps.css" />
+  <link rel="stylesheet" href="css/header.css" />
+  <link rel="stylesheet" href="css/font-awesome.css" />
 
-    <script type="text/javascript" src="//www.google.com/jsapi"></script>
-    <script type="text/javascript" src="js/googlechart.js"></script>	
-   	<script type="text/javascript" src="js/stationmodel-chart.js"></script>
+  <script src="//www.google.com/jsapi"></script>
+  <script src="js/googlechart.js"></script>
+  <script src="js/stationmodel-chart.js"></script>
+  <script src="//maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/underscore-min.js"></script>
+  <script src="js/backbone-min.js"></script>
+  <script src="js/handlebars.js"></script>
+  <script src="js/googlemaps.js"></script>
+  <script src="js/stationmodel-vars.js"></script>
+  <script src="js/stationmodel-basic-functions.js"></script>
+  <script src="js/stationmodel-map.js"></script>
+  <script src="js/jquery-ui.js"></script>
+  <script src="./js/jquery.mmenu.min.all.js"></script>
 
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/underscore-min.js"></script>
-    <script type="text/javascript" src="js/backbone-min.js"></script>
-    <script type="text/javascript" src="js/handlebars.js"></script>
-    <script type="text/javascript" src="js/googlemaps.js"></script>
-    <script type="text/javascript" src="js/stationmodel-vars.js"></script>    
-    <script type="text/javascript" src="js/stationmodel-basic-functions.js"></script>    
-    <script type="text/javascript" src="js/stationmodel-map.js"></script>
-    <script src="js/jquery-ui.js"></script>
+  <script id="template-list-links" type="text/x-handlebars-template">
+    {{#station}}
+      <li>
+        <a id="link-item" href="#" onclick="javascript:close_menu();myClick({{n}});"><img src="./img/{{id}}.png"></a>&nbsp;<a href="javascript:close_menu();open('container_stats');initialize_chart({{id}}, 'Temperatura');"><i class="fa fa-bar-chart-o fa-2x fa-inverse"></i></a>&nbsp;<a id="link-item" href="#" onclick="javascript:close_menu();myClick({{n}});">{{name}}</a>
+      </li>
+    {{/station}}
+  </script>
 
+  <script id="template-waypoint-menu" type="text/x-handlebars-template">
+      {{#waypoint}}
+      <div class="wp-container">
+          <div id="wp-minicontainer">
+            <div id="wp-big">{{name}}</div>
+            <div id="wp-web"><a target="_blank" href="{{url}}">WEB</a></div>
+            <a href="javascript:open('container_stats');initialize_chart({{id}}, 'Temperatura');"><i class="fa fa-bar-chart-o fa-1x"></i></a>
+            <div id="wp-fecha">{{update}}</div>
+            <div style="clear:Both"></div>
+            <hr>
+        </div>
 
-	<script type="text/javascript" src="./js/jquery.mmenu.min.all.js"></script>
-	<link type="text/css" rel="stylesheet" href="./css/menu_slider.css" />
-	<link type="text/css" rel="stylesheet" href="./css/jquery.mmenu.all.css" />
+        <div class="wp-item">
+          <div class="wp-normal" align="left">Temperatura {{temperatura}} °C</div>
+        </div>
 
-	<link rel="stylesheet" href="css/jquery-ui.css">
+        <div class="wp-item">
+          <div class="wp-normal" align="left">Humedad {{humedad}} %</div>
+        </div>
 
+        <div class="wp-item">
+          <div class="wp-normal" align="left">Presión atmosférica {{presion}} hPa</div>
+        </div>
 
-    <link rel="stylesheet" type="text/css" href="css/menu.css" />
-    <link rel="stylesheet" type="text/css" href="css/chart.css" />    
-    <link rel="stylesheet" type="text/css" href="css/waypoint.css" />
-    <link rel="stylesheet" type="text/css" href="css/maps.css" />
-	<link rel="stylesheet" type="text/css" href="css/header.css" />
+        <div class="wp-item">
+          <div class="wp-normal" align="left">Velocidad del viento {{velocidad}} km/h</div>
+        </div>
 
-	<link rel="stylesheet" type="text/css" href="css/font-awesome.css" />
+        <div class="wp-item">
+          <div class="wp-normal" align="left">Dirección del viento {{direccion}}</div>
+        </div>
 
-	<script id="template-list-links" type="text/x-handlebars-template">
-		{{#station}}
-			<li>
-				<a id="link-item" href="#" onclick="javascript:close_menu();myClick({{n}});"><img src="./img/{{id}}.png"></a>&nbsp;<a href="javascript:close_menu();open('container_stats');initialize_chart({{id}}, 'Temperatura');"><i class="fa fa-bar-chart-o fa-2x fa-inverse"></i></a>&nbsp;<a id="link-item" href="#" onclick="javascript:close_menu();myClick({{n}});">{{name}}</a>
-			</li>
-		{{/station}}
-	</script>   
+        <div class="wp-item">
+          <div class="wp-normal" align="left">Indice UV {{uv}}</div>
+        </div>
 
-	<script id="template-waypoint-menu" type="text/x-handlebars-template">
-	    {{#waypoint}}
-			<div class="wp-container">
-					<div id="wp-minicontainer">
-						<div id="wp-big">{{name}}</div>
-						<div id="wp-web"><a target="_blank" href="{{url}}">WEB</a></div>
-						<a href="javascript:open('container_stats');initialize_chart({{id}}, 'Temperatura');"><i class="fa fa-bar-chart-o fa-1x"></i></a>
-						<div id="wp-fecha">{{update}}</div>
-						<div style="clear:Both"></div>
-						<hr>
-				</div>
+        <div class="wp-item">
+          <div class="wp-normal" align="left">Lluvia {{rain}} mm</div>
+        </div>
 
-				<div class="wp-item">
-					<div class="wp-normal" align="left">Temperatura {{temperatura}} °C</div>
-				</div>
+        <div class="wp-item">
+          <div class="wp-normal" align="left">Promedio de lluvia {{rain_rate}} mm</div>
+        </div>
 
-				<div class="wp-item">
-					<div class="wp-normal" align="left">Humedad {{humedad}} %</div>
-				</div>
-
-				<div class="wp-item">
-					<div class="wp-normal" align="left">Presión atmosférica {{presion}} hPa</div>
-				</div>
-
-				<div class="wp-item">
-					<div class="wp-normal" align="left">Velocidad del viento {{velocidad}} km/h</div>
-				</div>
-
-				<div class="wp-item">
-					<div class="wp-normal" align="left">Dirección del viento {{direccion}}</div>
-				</div>
-
-				<div class="wp-item">
-					<div class="wp-normal" align="left">Indice UV {{uv}}</div>
-				</div>
-
-                                <div class="wp-item">
-                                        <div class="wp-normal" align="left"> Lluvia de {{rain}}</div>
-                                </div>
-
-                                <div class="wp-item">
-                                        <div class="wp-normal" align="left"> Promedio de Lluvia de {{rain_rate}} </div>
-                                </div>
-
-
-				<div style="clear:Both"></div>
-			</div>
-		{{/waypoint}}
-	</script>
+        <div style="clear:both"></div>
+      </div>
+    {{/waypoint}}
+  </script>
 
 
 
@@ -101,63 +94,63 @@
 
 
 
-	<div id="container">
+  <div id="container">
 
-		<div id="page">
+    <div id="page">
 
-			<div id="header" onclick="open_menu();">
-				<div id="fondo"></div>
+      <div id="header" onclick="open_menu();">
+        <div id="fondo"></div>
 
 
-			</div>
-			<nav id="menu">
+      </div>
+      <nav id="menu">
 
-				<ul>
-		  			<div id="stations"></div>
-		  		</ul>
-	  		</nav>
+        <ul>
+            <div id="stations"></div>
+          </ul>
+        </nav>
 
-	</div>	
+  </div>
 
- 
+
     <div id="map-canvas"></div>
 
     <div id="container_stats">
       <div id="stats">
-	        <div id="types">
-	           <a id="link-item" href="#" onclick="javascript:initialize_chart('', 'Temperatura', '', '');">Temperatura</a>&nbsp;&nbsp;&nbsp;
-	           <a id="link-item" href="#" onclick="javascript:initialize_chart('', 'Humedad', '', '');">Humedad</a>&nbsp;&nbsp;&nbsp;
-	           <a id="link-item" href="#" onclick="javascript:initialize_chart('', 'Presion', '', '');">Presion</a>&nbsp;&nbsp;&nbsp;
-	           <a id="link-item" href="#" onclick="javascript:initialize_chart('', 'Viento', '', '');">Viento</a>&nbsp;&nbsp;&nbsp;
-	           <a id="link-item" href="#" onclick="javascript:initialize_chart('', 'UV', '', '');">UV</a>
-	           <div id="close"><a href="javascript:close('container_stats');"><i class="fa fa-times-circle fa-2x"></i></a></div>
-	        <p>Desde: <input type="text" id="datepicker_from" size="4">&nbsp;Hasta: <input type="text" id="datepicker_to" size="4">&nbsp;<input type="submit" onclick="javascript:initialize_chart('', '', document.getElementById('datepicker_from').value, document.getElementById('datepicker_to').value);" value="Graficar"></p>   
-	        </div>  	
+          <div id="types">
+             <a id="link-item" href="#" onclick="javascript:initialize_chart('', 'Temperatura', '', '');">Temperatura</a>&nbsp;&nbsp;&nbsp;
+             <a id="link-item" href="#" onclick="javascript:initialize_chart('', 'Humedad', '', '');">Humedad</a>&nbsp;&nbsp;&nbsp;
+             <a id="link-item" href="#" onclick="javascript:initialize_chart('', 'Presion', '', '');">Presion</a>&nbsp;&nbsp;&nbsp;
+             <a id="link-item" href="#" onclick="javascript:initialize_chart('', 'Viento', '', '');">Viento</a>&nbsp;&nbsp;&nbsp;
+             <a id="link-item" href="#" onclick="javascript:initialize_chart('', 'UV', '', '');">UV</a>
+             <div id="close"><a href="javascript:close('container_stats');"><i class="fa fa-times-circle fa-2x"></i></a></div>
+          <p>Desde: <input type="text" id="datepicker_from" size="4">&nbsp;Hasta: <input type="text" id="datepicker_to" size="4">&nbsp;<input type="submit" onclick="javascript:initialize_chart('', '', document.getElementById('datepicker_from').value, document.getElementById('datepicker_to').value);" value="Graficar"></p>
+          </div>
 
-			 <script>
-			$(function() {
-			$( "#datepicker_from" ).datepicker();
-			$( "#datepicker_to" ).datepicker();
-			});
-			</script>
+       <script>
+      $(function() {
+      $( "#datepicker_from" ).datepicker();
+      $( "#datepicker_to" ).datepicker();
+      });
+      </script>
 
-	        <div id="background_chart">
-	        	<div id="loading"><i class="fa fa-refresh fa-spin fa-5x"></i></div>
-	        	<div id="chart_div"></div>
-	        </div>
-	  </div>      
+          <div id="background_chart">
+            <div id="loading"><i class="fa fa-refresh fa-spin fa-5x"></i></div>
+            <div id="chart_div"></div>
+          </div>
+    </div>
 
       </div>
-      
-	  <div id="logo_container">
-		  <img id="logo" src="./img/logo.png">
-	  </div>
 
-	  <script>
-      	initialize_map();
+    <div id="logo_container">
+      <img id="logo" src="./img/logo.png">
+    </div>
+
+    <script>
+        initialize_map();
     </script>
 
 </div>
 
-	</body>
+  </body>
 </html>
